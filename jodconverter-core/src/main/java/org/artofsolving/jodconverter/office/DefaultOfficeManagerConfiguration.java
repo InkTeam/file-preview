@@ -158,7 +158,7 @@ public class DefaultOfficeManagerConfiguration {
         } else if (!officeHome.isDirectory()) {
             throw new IllegalStateException("officeHome doesn't exist or is not a directory: " + officeHome);
         } else if (!OfficeUtils.getOfficeExecutable(officeHome).isFile()) {
-            throw new IllegalStateException("invalid officeHome: it doesn't contain soffice.exe: " + officeHome);
+            throw new IllegalStateException("invalid officeHome: it doesn't contain soffice: " + officeHome);
         }
         if (templateProfileDir != null && !isValidProfileDir(templateProfileDir)) {
             throw new IllegalStateException("templateProfileDir doesn't appear to contain a user profile: " + templateProfileDir);

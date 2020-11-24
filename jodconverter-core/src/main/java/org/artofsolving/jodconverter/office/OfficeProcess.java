@@ -55,7 +55,14 @@ class OfficeProcess {
     }
 
     public void start(boolean restart) throws IOException {
-        ProcessQuery processQuery = new ProcessQuery("soffice.exe", unoUrl.getAcceptString());
+        String processName = "soffice.exe";
+        if(PlatformUtils.isMac()){
+            processName = "soffice";
+        }
+        if(PlatformUtils.isLinux()){
+            processName = "soffice.bin";
+        }
+        ProcessQuery processQuery = new ProcessQuery(processName, unoUrl.getAcceptString());
         long existingPid = processManager.findPid(processQuery);
     	if (!(existingPid == PID_NOT_FOUND || existingPid == PID_UNKNOWN)) {
 			throw new IllegalStateException(String.format("a process with acceptString '%s' is already running; pid %d",

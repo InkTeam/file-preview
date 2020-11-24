@@ -103,6 +103,7 @@ public class OfficeUtils {
                 "/opt/openoffice",
                 "/opt/libreoffice",
                 "/opt/openoffice4",
+                "/opt/libreoffice6.4",
                 "/usr/lib/openoffice",
                 "/usr/lib/libreoffice"
             );
@@ -122,8 +123,10 @@ public class OfficeUtils {
     public static File getOfficeExecutable(File officeHome) {
         if (PlatformUtils.isMac()) {
             return new File(officeHome, "MacOS/soffice");
-        } else {
+        } if (PlatformUtils.isWindows()){
             return new File(officeHome, "program/soffice.exe");
+        } else {
+            return new File(officeHome, "program/soffice.bin");
         }
     }
 
