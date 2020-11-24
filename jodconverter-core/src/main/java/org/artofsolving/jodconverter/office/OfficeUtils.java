@@ -126,7 +126,7 @@ public class OfficeUtils {
         } if (PlatformUtils.isWindows()){
             return new File(officeHome, "program/soffice.exe");
         } else {
-            return new File(officeHome, "program/soffice");
+            return new File(officeHome, "program/soffice.bin");
         }
     }
 

@@ -56,8 +56,11 @@ class OfficeProcess {
 
     public void start(boolean restart) throws IOException {
         String processName = "soffice.exe";
-        if(PlatformUtils.isMac() || PlatformUtils.isLinux()){
+        if(PlatformUtils.isMac()){
             processName = "soffice";
+        }
+        if(PlatformUtils.isLinux()){
+            processName = "soffice.bin";
         }
         ProcessQuery processQuery = new ProcessQuery(processName, unoUrl.getAcceptString());
         long existingPid = processManager.findPid(processQuery);
